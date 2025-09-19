@@ -20,13 +20,18 @@
 }
 
   html, body {
+  overflow: hidden;
+  height: 100%;
   margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100vh;              /* siempre cubre toda la ventana */
-  overflow: hidden;           /* bloquea scroll horizontal y vertical */
-  background-color: var(--dark-color); /* fondo negro */
-  position: relative;         /* para que los elementos absolutos se posicionen respecto al body */
+}
+
+body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  overflow: hidden;
 }
 
 
@@ -2092,6 +2097,7 @@ h1 {
   </body>
 
 </html>
+
 
 
 
