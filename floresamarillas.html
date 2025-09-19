@@ -221,6 +221,28 @@ body {
 
 }
 
+/* Ajustes para móviles y tablets */
+@media (max-width: 1024px) {
+  html, body {
+    overflow-x: hidden; /* evita scroll horizontal */
+    overflow-y: hidden; /* evita scroll vertical por elementos animados */
+    height: 100%;
+  }
+
+  .titulo {
+    max-width: 90%; /* evita que se salga del viewport */
+  }
+
+  .night,
+  .flowers,
+  .cometa {
+    max-width: 100vw;
+    max-height: 100vh; /* asegura que nada se salga de la pantalla */
+  }
+}
+
+      
+
 .flower {
   position: absolute;
   bottom: 10vmin;
@@ -2072,4 +2094,5 @@ h1 {
   <div class="cometa cometa-der2"></div>
 
   </body>
+
 </html>
