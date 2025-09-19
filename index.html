@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bienvenida, Sofía</title>
+  <style>
+    :root{
+      --bg:#071019;
+      --accent:#ffd54a;
+      --muted:rgba(255,255,255,0.85);
+    }
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    
+    body{
+      background: linear-gradient(180deg,#02111a 0%, #071019 60%);
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    
+    .wrap{
+      width:100%;
+      max-width:1100px;
+      background:rgba(0,0,0,0.25);
+      border-radius:12px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Panel para acceder */
+    .access{
+      display:grid;
+      gap:12px;
+      justify-items:center;
+      text-align:center;
+    }
+    h1{margin:0 0 6px;color:var(--accent)}
+    p.small{margin:0 0 12px;font-size:0.95rem;color:rgba(255,255,255,0.7)}
+
+    .inputs{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    input[type="date"], input[type="text"], input[type="number"]{
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      font-size:1rem;
+    }
+    button{
+      padding:10px 16px;
+      border-radius:8px;
+      border:0;
+      background:var(--accent);
+      color:#071019;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .hint{font-size:0.85rem;color:rgba(255,255,255,0.55)}
+
+    /* Mensaje*/
+    .msg{min-height:1.2em;font-size:0.95rem;color:#f88}
+
+    /* Contigo(para validar)*/
+    .protected{
+      display:none;
+      margin-top:18px;
+      padding:18px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+
+    @media (max-width:700px){
+      .foto{width:140px;height:220px}
+      .wrap{padding:16px}
+    }
+
+  .foto-lateral {
+  position: absolute;
+  top: 50%;
+  width: 200px;        /*Tamaño de la foto, vertical y horizontal*/
+  height: 200px;
+  border-radius: 50%;  
+  object-fit: cover;   
+  border: 3px solid gold;
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: all 0.3s ease; /* animación suave*/
+}
+
+.foto-lateral.izquierda {
+  left: 10%;
+}
+
+.foto-lateral.derecha {
+  right: 10%;
+}
+
+/* ( para cel y tablet) */
+@media (max-width: 768px) {
+  .foto-lateral {
+    position: static;          
+    display: block;
+    margin: 10px auto;        
+    width: 90px;              
+    height: 90px;
+    transform: none;
+  }
+
+  /* Las mostramos arriba y abajo del panel */
+  .foto-lateral.izquierda {
+    margin-bottom: 15px; /* arriba */
+  }
+
+  .foto-lateral.derecha {
+    margin-top: 15px; /* abajo */
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+        <img src="Image/Foto1.jpeg" alt="Foto izquierda" class="foto-lateral izquierda">
+        <img src="Image/Foto2.jpeg" alt="Foto derecha" class="foto-lateral derecha">
+
+    <!-- Panel principal -->
+    <div id="panel" class="access" aria-live="polite">
+      <h1>Karla Sofia Valles</h1>
+      <p class="small">Ingresa la fecha de hoy y presiona <strong>OK</strong> para ver la sorpresa.</p>
+
+      <div class="inputs">
+        
+        <input id="dateInput" type="date" aria-label="Fecha de nacimiento (día, mes, año)" />
+        <button id="btnCheck">OK</button>
+      </div>
+
+      <div class="hint"> Si prefieres, introduce el año de tu cumpleaños. (4 dígitos):</div>
+
+      <div class="inputs">
+        <input id="pinInput" type="number" placeholder="PIN" min="0" max="9999" />
+        <button id="btnPin">Comprobar PIN</button>
+      </div>
+
+      <div class="msg" id="msg"></div>
+
+    </div>
+
+   
+    <div id="protected" class="protected" role="region" aria-label="Contenido protegido">
+      <h2 style="color:var(--accent);text-align:center;margin-top:0">Para ti</h2>
+
+    </div>
+
+  </div>
+  <script src="Validación.js"></script>
+</body>
+</html>
